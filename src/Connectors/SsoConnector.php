@@ -26,6 +26,16 @@ class SsoConnector extends Connector
         return config('sso.base_url');
     }
 
+    public function resolveConnectTimeout(): int
+    {
+        return (int) config('sso.timeout.connect', 60);
+    }
+
+    public function resolveRequestTimeout(): int
+    {
+        return (int) config('sso.timeout.request', 120);
+    }
+
     protected function defaultHeaders(): array
     {
         return [
