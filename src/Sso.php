@@ -3,11 +3,13 @@
 namespace Imv\Sso;
 
 use Imv\Sso\Connectors\SsoConnector;
+use Imv\Sso\DTO\SignDTO;
 use Imv\Sso\DTO\TokenDTO;
 use Imv\Sso\DTO\UserDTO;
 use Imv\Sso\Requests\AuthorizationCodeRequest;
 use Imv\Sso\Requests\IntrospectTokenRequest;
 use Imv\Sso\Requests\RefreshTokenRequest;
+use Imv\Sso\Requests\SignRequest;
 
 class Sso
 {
@@ -18,11 +20,9 @@ class Sso
         $this->connector = new SsoConnector;
     }
 
-    public function getUserData(string $redirectUrl, string $code, string $codeVerifier): UserDTO
+    public function getUserData(string $access_token): UserDTO
     {
-        $token = $this->getToken($redirectUrl, $code, $codeVerifier);
-
-        return $this->introspectToken($token->access_token);
+        return $this->introspectToken($access_token);
     }
 
     public function getToken(string $redirectUrl, string $code, string $codeVerifier): TokenDTO
@@ -43,7 +43,16 @@ class Sso
         return UserDTO::fromResponse($response);
     }
 
-    public function refreshToken(string $refreshToken): TokenDTO
+    public function sign(string $accessToken, string $doc)
+    {
+        $response = $this->connector->send(
+            new SignRequest($doc, $accessToken)
+        );
+
+        return SignDTO::fromResponse($response);
+    }
+
+    public function refreshAccessToken(string $refreshToken): TokenDTO
     {
         $response = $this->connector->send(
             new RefreshTokenRequest($refreshToken)

@@ -16,8 +16,8 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('sso.base_url', 'https://sso.example.com/');
-        config()->set('sso.client_id', 'test-client');
-        config()->set('sso.client_secret', 'test-secret');
+        config()->set('sso.base_url', config('sso.base_url'));
+        config()->set('sso.client_id', config('sso.client_id'));
+        config()->set('sso.client_secret', config('sso.client_secret'));
     }
 }

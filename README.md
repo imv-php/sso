@@ -23,6 +23,8 @@ You can install the package via composer:
 composer require imv/sso
 ```
 
+Example of redirect url: https://{base_url}/e-imzo/sign?redirectUri={redirect_url}&doc={doc}
+
 You can publish and run the migrations with:
 
 ```bash
