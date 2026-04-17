@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.1",
         "illuminate/contracts": "^8.0||^9.0||^10.0||^11.0||^12.0||^13.0",
-        "saloonphp/saloon": "^2.0||^3.0",
+        "saloonphp/saloon": "^2.0||^3.0||^4.0",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
