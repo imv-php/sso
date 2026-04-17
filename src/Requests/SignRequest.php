@@ -28,7 +28,7 @@ class SignRequest extends Request
     protected function defaultHeaders(): array
     {
         return [
-            'Authorization' => 'Bearer ' . $this->accessToken,
+            'Authorization' => 'Bearer '.$this->accessToken,
         ];
     }
 

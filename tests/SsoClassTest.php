@@ -3,14 +3,14 @@
 use Imv\Sso\DTO\SignDTO;
 use Imv\Sso\DTO\TokenDTO;
 use Imv\Sso\DTO\UserDTO;
-use Imv\Sso\Sso;
 use Imv\Sso\Facades\Sso as SsoFacade;
+use Imv\Sso\Sso;
 
 const REDIRECT_URL = '';
 const CODE = '';
 const CODE_VERIFIER = '';
 
-$shared = new stdClass();
+$shared = new stdClass;
 $shared->token_dto = new TokenDTO(
     access_token: '',
     refresh_token: '',
